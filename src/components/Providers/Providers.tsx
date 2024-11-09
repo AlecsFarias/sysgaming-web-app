@@ -1,4 +1,4 @@
-import { CssBaseline, CssVarsProvider } from "@mui/joy";
+import { CssBaseline, CssVarsProvider, GlobalStyles } from "@mui/joy";
 import { theme } from "../../utils/themes/theme";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -24,6 +24,16 @@ export const Providers: React.FC<ProvidersProps> = ({ children }) => {
           autoHideDuration={variables.snackbarTimeout}
         />
         <CssBaseline />
+        <GlobalStyles
+          styles={(theme) => ({
+            ":root": {
+              "--Sidebar-width": "220px",
+              [theme.breakpoints.up("lg")]: {
+                "--Sidebar-width": "240px",
+              },
+            },
+          })}
+        />
         {children}
       </CssVarsProvider>
     </QueryClientProvider>

@@ -24,6 +24,7 @@ export type DataGridProps = {
   rowsPerPage: number;
   total: number;
   loading?: boolean;
+  Actions?: React.ReactNode;
 };
 
 export const DataGrid: React.FC<DataGridProps> = ({
@@ -38,16 +39,9 @@ export const DataGrid: React.FC<DataGridProps> = ({
   total,
   handleChangeRowsPerPage,
   loading,
+  Actions,
 }) => {
-  const [order, setOrder] = React.useState<"asc" | "desc">("asc");
-  const [orderBy, setOrderBy] = React.useState<string>("name");
   const [selected, setSelected] = React.useState<readonly string[]>([]);
-
-  const handleRequestSort = (property: string) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(property);
-  };
 
   const handleSelectAllClick = canSelectAll
     ? (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,6 +78,7 @@ export const DataGrid: React.FC<DataGridProps> = ({
         numSelected={selected.length}
         title={title}
         loading={loading}
+        Actions={Actions}
       />
 
       <Table
@@ -109,11 +104,8 @@ export const DataGrid: React.FC<DataGridProps> = ({
       >
         <EnhancedTableHead
           numSelected={selected.length}
-          order={order}
-          orderBy={orderBy}
           onSelectAllClick={handleSelectAllClick}
           canSelect={canSelect}
-          onRequestSort={handleRequestSort}
           rowCount={data.length}
           columns={columns}
         />

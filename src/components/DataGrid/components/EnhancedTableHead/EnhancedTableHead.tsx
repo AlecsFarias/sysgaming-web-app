@@ -7,7 +7,7 @@ export interface HeadCell {
   disablePadding?: boolean;
   id: string;
   label: string;
-  render?: (data: any) => React.ReactNode;
+  Render?: (data: any) => React.ReactNode;
   format?: (data: any) => string;
   minWidth?: number;
   style?: (
@@ -20,10 +20,7 @@ export interface HeadCell {
 
 interface EnhancedTableProps {
   numSelected: number;
-  onRequestSort: (property: string) => void;
   onSelectAllClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  order: "asc" | "desc";
-  orderBy: string;
   rowCount: number;
   columns: HeadCell[];
   canSelect?: boolean;
@@ -31,18 +28,11 @@ interface EnhancedTableProps {
 
 export const EnhancedTableHead: React.FC<EnhancedTableProps> = ({
   onSelectAllClick,
-  order,
-  orderBy,
   numSelected,
   rowCount,
-  onRequestSort,
   columns,
   canSelect,
 }) => {
-  const createSortHandler = (property: string) => {
-    onRequestSort(property);
-  };
-
   return (
     <thead>
       <tr>
@@ -65,50 +55,18 @@ export const EnhancedTableHead: React.FC<EnhancedTableProps> = ({
         ) : null}
 
         {columns.map((headCell) => {
-          const active = orderBy === headCell.id;
           return (
-            <th
-              key={headCell.id}
-              style={{ minWidth: headCell.minWidth }}
-              aria-sort={
-                active
-                  ? ({ asc: "ascending", desc: "descending" } as const)[order]
-                  : undefined
-              }
-            >
+            <th key={headCell.id} style={{ minWidth: headCell.minWidth }}>
               <Link
                 underline="none"
                 color="neutral"
-                textColor={active ? "primary.plainColor" : undefined}
+                textColor={"primary.plainColor"}
                 component="button"
-                onClick={() => createSortHandler(headCell.id)}
-                startDecorator={
-                  <ArrowDownwardIcon
-                    sx={[active ? { opacity: 1 } : { opacity: 0 }]}
-                  />
-                }
                 sx={{
                   fontWeight: "lg",
-
-                  "& svg": {
-                    transition: "0.2s",
-                    transform:
-                      active && order === "desc"
-                        ? "rotate(0deg)"
-                        : "rotate(180deg)",
-                  },
-
-                  "&:hover": { "& svg": { opacity: 1 } },
                 }}
               >
                 {headCell.label}
-                {active ? (
-                  <Box component="span" sx={visuallyHidden}>
-                    {order === "desc"
-                      ? "sorted descending"
-                      : "sorted ascending"}
-                  </Box>
-                ) : null}
               </Link>
             </th>
           );

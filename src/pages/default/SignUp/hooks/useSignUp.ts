@@ -17,7 +17,9 @@ export const useSignUp = () => {
         variant: "error",
       }),
     onSuccess: () => {
-      enqueueSnackbar("Conta criada com sucesso!");
+      enqueueSnackbar("Conta criada com sucesso!", {
+        variant: "success",
+      });
       navigate("/signIn");
     },
   });

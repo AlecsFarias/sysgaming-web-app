@@ -1,79 +1,51 @@
-import {
-  Box,
-  CircularProgress,
-  IconButton,
-  Tooltip,
-  Typography,
-} from "@mui/joy";
-
-import { Delete, FilterList } from "@mui/icons-material";
+import { Box, CircularProgress, Grid, Typography } from "@mui/joy";
 
 interface EnhancedTableToolbarProps {
   title: string;
   numSelected: number;
   onDeleteMany?: () => void;
   loading?: boolean;
+  Actions?: React.ReactNode;
 }
 
 export const EnhancedTableToolbar = ({
   title,
-  numSelected,
-  onDeleteMany,
   loading,
+  Actions,
 }: EnhancedTableToolbarProps) => {
   return (
     <Box
       sx={[
         {
-          display: "flex",
-          alignItems: "center",
-          py: 1,
-          gap: 2,
-          pl: { sm: 2 },
-          pr: { xs: 1, sm: 1 },
           borderTopLeftRadius: "var(--unstable_actionRadius)",
           borderTopRightRadius: "var(--unstable_actionRadius)",
-        },
-        numSelected > 0 && {
-          bgcolor: "background.level1",
+          p: 2,
+          pb: 0,
         },
       ]}
     >
-      {loading ? <CircularProgress size="sm" /> : null}
+      <Grid container spacing={2} justifyContent="space-between">
+        <Grid xs={12} md>
+          <Box display={"flex"} alignItems={"center"} gap={2}>
+            {loading ? <CircularProgress size="sm" /> : null}
+            <Typography
+              level="body-lg"
+              sx={{ fontWeight: "bold" }}
+              id="tableTitle"
+              component="div"
+              color="primary"
+            >
+              {title}
+            </Typography>
+          </Box>
+        </Grid>
 
-      {numSelected > 0 ? (
-        <Typography sx={{ flex: "1 1 100%" }} component="div">
-          {numSelected} selecionados
-        </Typography>
-      ) : (
-        <Typography
-          level="body-lg"
-          sx={{ flex: "1 1 100%", fontWeight: "bold" }}
-          id="tableTitle"
-          component="div"
-          color="primary"
-        >
-          {title}
-        </Typography>
-      )}
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton
-            size="sm"
-            color="danger"
-            variant="solid"
-            onClick={onDeleteMany}
-          >
-            <Delete />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton size="sm" variant="outlined" color="neutral">
-            <FilterList />
-          </IconButton>
-        </Tooltip>
-      )}
+        {Actions ? (
+          <Grid xs={12} md>
+            {Actions}
+          </Grid>
+        ) : null}
+      </Grid>
     </Box>
   );
 };

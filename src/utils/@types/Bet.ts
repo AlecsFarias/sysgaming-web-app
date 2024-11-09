@@ -3,5 +3,7 @@ export type Bet = {
   createdAt: Date;
   amount: number;
   winAmount: number;
-  status: "win" | "lost";
+  status: "win" | "lost" | "canceled";
 };
+
+export const betStatuses = ["win", "lost", "canceled"];

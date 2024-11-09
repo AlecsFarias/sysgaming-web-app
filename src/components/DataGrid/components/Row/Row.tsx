@@ -57,7 +57,7 @@ export const Row: React.FC<RowProps> = ({
             ...(column.style ? column.style(data) : {}),
           }}
         >
-          {renderCell(column.id, column.render, column.format)}
+          {renderCell(column.id, column.Render, column.format)}
         </td>
       ))}
     </tr>

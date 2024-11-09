@@ -17,6 +17,10 @@ export type ListBetsParams = {
 };
 
 const getBets = async (data: ListBetsParams): Promise<ListBetsResponse> => {
+  if (data.status === "all") {
+    data.status = undefined;
+  }
+
   return http
     .get("/my-bets", {
       params: data,

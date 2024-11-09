@@ -54,8 +54,6 @@ export const DataGrid: React.FC<DataGridProps> = ({
     : undefined;
 
   const handleClick = (id: string) => {
-    console.log({ id });
-
     if (selected.includes(id)) {
       return setSelected((prev) => [
         ...prev.filter((otherId) => otherId !== id),

@@ -1,12 +1,10 @@
 import { MutationListener } from "../../utils/@types";
+import { User } from "../../utils/@types/User";
 import { SignInSchema } from "../../utils/validators/auth/signIn";
 import { http } from "../http";
 import { useMutation } from "react-query";
 
-export type SignInResponse = {
-  id: string;
-  balance: number;
-  currency: string;
+export type SignInResponse = User & {
   accessToken: string;
 };
 

@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 import { variables } from "../utils/variables";
 
 interface AuthStore {
-  id?: string;
+  token?: string;
   authenticate: (id: string) => void;
   isAuthenticated: () => boolean;
   signOut: () => void;
@@ -12,10 +12,10 @@ interface AuthStore {
 export const useAuthStore = create<AuthStore>()(
   persist(
     (set, get) => ({
-      id: undefined,
-      authenticate: (id: string) => set({ id }),
-      isAuthenticated: () => !!get().id,
-      signOut: () => set({ id: undefined }),
+      token: undefined,
+      authenticate: (token: string) => set({ token }),
+      isAuthenticated: () => !!get().token,
+      signOut: () => set({ token: undefined }),
     }),
     {
       name: variables.stores.auth,

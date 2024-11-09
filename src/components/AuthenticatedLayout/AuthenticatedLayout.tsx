@@ -27,9 +27,6 @@ export const AuthenticatedLayout = () => {
         }}
       >
         <Outlet />
-
-        {/*         <OrderTable />
-      <OrderList /> */}
       </Box>
     </Box>
   );

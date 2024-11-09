@@ -8,10 +8,12 @@ import { SignInResponse, useSignInService } from "../../../../services";
 import { enqueueSnackbar } from "notistack";
 import { useAuthStore } from "../../../../store/auth.store";
 import { useNavigate } from "react-router-dom";
+import { useUserStore } from "../../../../store";
 
 export const useSignIn = () => {
   const navigate = useNavigate();
   const authenticate = useAuthStore((state) => state.authenticate);
+  const setUser = useUserStore((state) => state.setUser);
 
   const { mutate: signIn, isLoading } = useSignInService({
     onError: (error) =>
@@ -21,9 +23,10 @@ export const useSignIn = () => {
     onSuccess: onSignSucess,
   });
 
-  function onSignSucess(data: SignInResponse) {
+  function onSignSucess({ accessToken, ...user }: SignInResponse) {
     navigate("/home");
-    authenticate(data.id);
+    authenticate(accessToken);
+    setUser(user);
   }
 
   const {

@@ -1,68 +1,27 @@
 import * as React from "react";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Breadcrumbs from "@mui/joy/Breadcrumbs";
-import Link from "@mui/joy/Link";
-import Typography from "@mui/joy/Typography";
 
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
-import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
-import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
+import { Header } from "../../../components";
+import { Grid } from "@mui/joy";
+import { Bet, HistoryTable, Wallet } from "./components";
 
 export const Dashboard: React.FC = () => {
   return (
     <>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Breadcrumbs
-          size="sm"
-          aria-label="breadcrumbs"
-          separator={<ChevronRightRoundedIcon /* fontSize="sm"  */ />}
-          sx={{ pl: 0 }}
-        >
-          <Link
-            underline="none"
-            color="neutral"
-            href="#some-link"
-            aria-label="Home"
-          >
-            <HomeRoundedIcon />
-          </Link>
-          <Link
-            underline="hover"
-            color="neutral"
-            href="#some-link"
-            sx={{ fontSize: 12, fontWeight: 500 }}
-          >
-            Dashboard
-          </Link>
-          <Typography color="primary" sx={{ fontWeight: 500, fontSize: 12 }}>
-            Orders
-          </Typography>
-        </Breadcrumbs>
-      </Box>
+      <Header routes={["Inicio"]} title="Carteira digital" />
 
-      <Box
-        sx={{
-          display: "flex",
-          mb: 1,
-          gap: 1,
-          flexDirection: { xs: "column", sm: "row" },
-          alignItems: { xs: "start", sm: "center" },
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-        }}
-      >
-        <Typography level="h2" component="h1">
-          Orders
-        </Typography>
-        <Button
-          color="primary"
-          startDecorator={<DownloadRoundedIcon />}
-          size="sm"
-        >
-          Download PDF
-        </Button>
-      </Box>
+      <Grid container spacing={2} alignItems={"stretch"}>
+        <Grid xs={12} sm={12} md={6}>
+          <Wallet />
+        </Grid>
+
+        <Grid xs={12} sm={12} md={6}>
+          <Bet />
+        </Grid>
+
+        <Grid xs={12}>
+          <HistoryTable />
+        </Grid>
+      </Grid>
     </>
   );
 };

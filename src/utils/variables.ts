@@ -3,5 +3,6 @@ export const variables = {
   maxSnackbars: 3,
   stores: {
     auth: "sysgaming-auth",
+    user: "sysgaming-user",
   },
 };

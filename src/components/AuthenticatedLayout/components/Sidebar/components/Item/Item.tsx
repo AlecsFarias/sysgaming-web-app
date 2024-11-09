@@ -4,6 +4,7 @@ import {
   ListItemContent,
   Typography,
 } from "@mui/joy";
+import { Link, useLocation } from "react-router-dom";
 
 export type ItemProps = {
   name: string;
@@ -12,11 +13,12 @@ export type ItemProps = {
 };
 
 export const Item: React.FC<ItemProps> = ({ name, icon, route }) => {
-  console.log(route);
+  const location = useLocation();
+  const { pathname } = location;
 
   return (
-    <ListItem>
-      <ListItemButton selected>
+    <ListItem component={Link} to={route}>
+      <ListItemButton selected={pathname.includes(route)}>
         {icon}
         <ListItemContent>
           <Typography level="title-sm">{name}</Typography>

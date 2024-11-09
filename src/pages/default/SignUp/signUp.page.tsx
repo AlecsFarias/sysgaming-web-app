@@ -26,6 +26,13 @@ export const SignUp: React.FC = () => {
       <Stack sx={{ gap: 4, mt: 2 }}>
         <form onSubmit={onSubmit}>
           <Input
+            name="name"
+            label="Nome"
+            control={control}
+            error={errors?.name?.message}
+          />
+
+          <Input
             name="email"
             label="E-mail"
             control={control}

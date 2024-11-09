@@ -6,15 +6,6 @@ import {
   Typography,
 } from "@mui/joy";
 
-const StyledCard = styled(JoyCard)(({ theme }) => ({
-  backgroundColor: theme.palette.primary[800],
-  borderRadius: "15px",
-  boxShadow: "0 8px 24px rgba(0, 0, 0, 0.15)",
-  border: "2px solid #2c303a",
-  color: "#ffffff",
-  minHeight: "100%",
-}));
-
 const CardHeader = styled(Box)({
   display: "flex",
   justifyContent: "space-between",
@@ -41,9 +32,9 @@ export const Card: React.FC<CardProps> = ({ title, action, children }) => {
       <CardContent>
         <CardHeader>
           <Typography
-            sx={(theme) => ({
+            sx={{
               fontWeight: "bold",
-            })}
+            }}
             color="primary"
           >
             {title}

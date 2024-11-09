@@ -6,8 +6,11 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInResponse, useSignInService } from "../../../../services";
 import { enqueueSnackbar } from "notistack";
+import { useAuthStore } from "../../../../store/auth.store";
 
 export const useSignIn = () => {
+  const authenticate = useAuthStore((state) => state.authenticate);
+
   const { mutate: signIn, isLoading } = useSignInService({
     onError: (error) =>
       enqueueSnackbar(error?.response?.data?.message, {
@@ -17,7 +20,7 @@ export const useSignIn = () => {
   });
 
   function onSignSucess(data: SignInResponse) {
-    console.log(data);
+    authenticate(data.id);
   }
 
   const {

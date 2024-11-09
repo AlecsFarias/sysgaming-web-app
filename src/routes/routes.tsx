@@ -1,17 +1,11 @@
-import { BrowserRouter, createBrowserRouter } from "react-router-dom";
-import { Dashboard } from "../pages/authenticated";
+import { BrowserRouter } from "react-router-dom";
 import { DefaultRouter } from "./components/DefaultRouter";
-
-export const AuthenticatedRouter = createBrowserRouter([
-  {
-    path: "/signin",
-    element: <Dashboard />,
-  },
-]);
+import { AuthenticatedRouter } from "./components/AuthenticatedRouter";
 
 export const Routes = () => {
   return (
     <BrowserRouter>
+      <AuthenticatedRouter />
       <DefaultRouter />
     </BrowserRouter>
   );

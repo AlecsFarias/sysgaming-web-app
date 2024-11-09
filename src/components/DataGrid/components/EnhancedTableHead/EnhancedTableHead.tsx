@@ -1,13 +1,21 @@
 import { Box, Checkbox, Link } from "@mui/joy";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { visuallyHidden } from "@mui/utils";
+import { DetailedHTMLProps, TdHTMLAttributes } from "react";
 
 export interface HeadCell {
-  disablePadding: boolean;
+  disablePadding?: boolean;
   id: string;
   label: string;
-  format?: (data: any) => React.ReactNode;
+  render?: (data: any) => React.ReactNode;
+  format?: (data: any) => string;
   minWidth?: number;
+  style?: (
+    data?: any
+  ) => DetailedHTMLProps<
+    TdHTMLAttributes<HTMLTableDataCellElement>,
+    HTMLTableDataCellElement
+  >;
 }
 
 interface EnhancedTableProps {

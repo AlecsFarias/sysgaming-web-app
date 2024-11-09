@@ -1,15 +1,14 @@
 import { CssBaseline, CssVarsProvider, GlobalStyles } from "@mui/joy";
 import { theme } from "../../utils/themes/theme";
 import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClientProvider } from "react-query";
 import { SnackbarProvider } from "notistack";
 import { variables } from "../../utils/variables";
+import { queryClient } from "../../utils";
 
 type ProvidersProps = {
   children: React.ReactNode;
 };
-
-const queryClient = new QueryClient();
 
 export const Providers: React.FC<ProvidersProps> = ({ children }) => {
   return (

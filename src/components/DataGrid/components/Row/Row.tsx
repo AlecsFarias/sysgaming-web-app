@@ -16,9 +16,17 @@ export const Row: React.FC<RowProps> = ({
   isSelected,
   canSelect,
 }) => {
-  const renderCell = (id: string, format?: (data: any) => React.ReactNode) => {
+  const renderCell = (
+    id: string,
+    render?: (data: any) => React.ReactNode,
+    format?: (data: any) => string
+  ) => {
     if (format) {
       return format(data);
+    }
+
+    if (render) {
+      return render(data);
     }
 
     return data[id];
@@ -46,9 +54,10 @@ export const Row: React.FC<RowProps> = ({
           style={{
             minWidth: column.minWidth,
             paddingLeft: 30,
+            ...(column.style ? column.style(data) : {}),
           }}
         >
-          {renderCell(column.id, column.format)}
+          {renderCell(column.id, column.render, column.format)}
         </td>
       ))}
     </tr>

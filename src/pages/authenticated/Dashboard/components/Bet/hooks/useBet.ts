@@ -10,13 +10,21 @@ import {
   useCreateBetService,
 } from "../../../../../../services/bet/createBet";
 import { enqueueSnackbar } from "notistack";
+import { queryClient } from "../../../../../../utils";
 
 export const useBet = () => {
   const balance = useUserStore((state) => state.user?.balance ?? 0);
   const updateBalance = useUserStore((state) => state.updateBalance);
 
   const { mutate: createBet, isLoading } = useCreateBetService({
-    onError: console.log,
+    onError: (error) =>
+      enqueueSnackbar(
+        error?.response?.data?.message ??
+          "Ocorreu algum erro, tente novamente mais tarde",
+        {
+          variant: "error",
+        }
+      ),
     onSuccess: onSuccessBet,
   });
 
@@ -24,6 +32,10 @@ export const useBet = () => {
     updateBalance(data.balance);
 
     const sucess = !!data.winAmount;
+
+    queryClient.invalidateQueries({
+      queryKey: ["bets"],
+    });
 
     enqueueSnackbar(
       sucess

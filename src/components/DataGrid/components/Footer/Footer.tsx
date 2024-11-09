@@ -57,11 +57,21 @@ export const Footer: React.FC<FooterProps> = ({
                 size="sm"
                 color="neutral"
                 variant="outlined"
-                disabled={page === 0}
+                disabled={page === 1}
                 onClick={() => handleChangePage(page - 1)}
                 sx={{ bgcolor: "background.surface" }}
               >
                 <KeyboardArrowLeft />
+              </IconButton>
+
+              <IconButton
+                size="sm"
+                color="neutral"
+                variant="outlined"
+                disabled
+                sx={{ bgcolor: "background.surface" }}
+              >
+                {page} / {Math.ceil(total / rowsPerPage)}
               </IconButton>
 
               <IconButton

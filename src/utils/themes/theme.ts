@@ -1,6 +1,6 @@
 import { extendTheme } from "@mui/joy/styles";
 
-export const lightTheme = extendTheme({
+export const theme = extendTheme({
   components: {
     JoyChip: {
       defaultProps: {

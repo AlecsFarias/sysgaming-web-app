@@ -1,23 +1,23 @@
 import * as React from "react";
 import { Button, Link, Typography, Stack } from "@mui/joy";
-import { Link as RouterLink } from "react-router-dom";
 import { Input } from "../../../components/form";
-import { useSignIn } from "./hooks/useSignIn";
+import { Link as RouterLink } from "react-router-dom";
+import { useSignUp } from "./hooks/useSignUp";
 
-export const SignIn: React.FC = () => {
-  const { control, errors, onSubmit, isLoading } = useSignIn();
+export const SignUp: React.FC = () => {
+  const { control, errors, onSubmit, isLoading } = useSignUp();
 
   return (
     <>
       <Stack sx={{ gap: 4, mb: 2 }}>
         <Stack sx={{ gap: 1 }}>
           <Typography component="h1" level="h3">
-            Entrar
+            Cadastro
           </Typography>
           <Typography level="body-sm">
-            Ainda não tem cadastro ?
-            <Link component={RouterLink} to="/signUp" level="title-sm" ml={1}>
-              Quero me cadastrar
+            Ja tem conta ?
+            <Link component={RouterLink} to="/signIn" level="title-sm" ml={1}>
+              Fazer login
             </Link>
           </Typography>
         </Stack>
@@ -40,8 +40,16 @@ export const SignIn: React.FC = () => {
             error={errors?.password?.message}
           />
 
+          <Input
+            name="confirmPassword"
+            label="Repetir senha"
+            control={control}
+            type="password"
+            error={errors?.confirmPassword?.message}
+          />
+
           <Button type="submit" fullWidth sx={{ mt: 6 }} loading={isLoading}>
-            Entrar
+            Sign in
           </Button>
         </form>
       </Stack>

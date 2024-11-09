@@ -1,18 +1,10 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Layout } from "../../../pages/default/components/Layout";
 import { SignIn, SignUp } from "../../../pages";
-import { useAuthStore } from "../../../store/auth.store";
-import { useEffect } from "react";
+import { useCheckAuth } from "../../hooks/useCheckAuth";
 
 export const DefaultRouter: React.FC = () => {
-  const navigate = useNavigate();
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated());
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/home");
-    }
-  }, [isAuthenticated, navigate]);
+  useCheckAuth(false);
 
   return (
     <Routes>

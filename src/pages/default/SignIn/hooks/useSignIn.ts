@@ -7,8 +7,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInResponse, useSignInService } from "../../../../services";
 import { enqueueSnackbar } from "notistack";
 import { useAuthStore } from "../../../../store/auth.store";
+import { useNavigate } from "react-router-dom";
 
 export const useSignIn = () => {
+  const navigate = useNavigate();
   const authenticate = useAuthStore((state) => state.authenticate);
 
   const { mutate: signIn, isLoading } = useSignInService({
@@ -20,6 +22,7 @@ export const useSignIn = () => {
   });
 
   function onSignSucess(data: SignInResponse) {
+    navigate("/home");
     authenticate(data.id);
   }
 

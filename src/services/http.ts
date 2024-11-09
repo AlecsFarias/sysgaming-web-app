@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useAuthStore } from "../store";
+import { variables } from "../utils";
 
 export const http = axios.create({
-  baseURL: "http://localhost:3000/",
-  timeout: 1000 * 5, //5 seconds,
+  baseURL: variables.backendUrl,
+  timeout: variables.backendTimeout,
 });
 
 http.interceptors.request.use(

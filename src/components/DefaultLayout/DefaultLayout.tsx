@@ -1,10 +1,10 @@
 import { Box, IconButton, Typography } from "@mui/joy";
 import { Outlet } from "react-router-dom";
 
-import logo from "../../../../assets/logo.webp";
-import { ThemeButton } from "../../../../components/ThemeButton";
+import logo from "../../assets/logo.webp";
+import { ThemeButton } from "../ThemeButton";
 
-export const Layout: React.FC = () => {
+export const DefaultLayout: React.FC = () => {
   return (
     <>
       <Box

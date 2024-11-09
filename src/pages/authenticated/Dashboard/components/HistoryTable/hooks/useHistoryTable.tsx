@@ -33,7 +33,6 @@ const resetPageIfKey = ["status", "limit"];
 
 export const useHistoryTable = () => {
   const currency = useUserStore((state) => state.user?.currency);
-  const updateBalance = useUserStore((state) => state.updateBalance);
 
   const [filters, setFilters] = useState<ListBetsParams>({
     limit: 10,
@@ -71,8 +70,6 @@ export const useHistoryTable = () => {
     enqueueSnackbar("Aposta cancelada com sucesso", {
       variant: "success",
     });
-
-    updateBalance(data.balance);
   };
 
   const columns: HeadCell[] = [

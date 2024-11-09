@@ -14,7 +14,6 @@ import { queryClient } from "../../../../../../utils";
 
 export const useBet = () => {
   const balance = useUserStore((state) => state.user?.balance ?? 0);
-  const updateBalance = useUserStore((state) => state.updateBalance);
 
   const { mutate: createBet, isLoading } = useCreateBetService({
     onError: (error) =>
@@ -29,8 +28,6 @@ export const useBet = () => {
   });
 
   function onSuccessBet(data: CreateBetResponse) {
-    updateBalance(data.balance);
-
     const sucess = !!data.winAmount;
 
     queryClient.invalidateQueries({

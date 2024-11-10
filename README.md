@@ -1,50 +1,86 @@
-# React + TypeScript + Vite
+# Sysgaming Digital Wallet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Descrição do Projeto
 
-Currently, two official plugins are available:
+Este projeto é um teste para a empresa **Sysgaming**, com o objetivo de demonstrar habilidades técnicas no desenvolvimento de uma aplicação utilizando **React** para o frontend e um backend customizado para suporte à comunicação via **Socket.IO**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Frontend**: React (Vite + TypeScript)
+- **Backend**: Node.js com suporte a Socket.IO
+- **Gerenciamento de Pacotes**: Yarn
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## ⚙️ Pré-requisitos
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- [Node.js](https://nodejs.org/)
+- [Yarn](https://classic.yarnpkg.com/)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+## 🛠️ Configuração e Execução
+
+### Backend
+
+1. **Clone o repositório do backend**:
+
+git clone -b sysgaming-alecsander-test https://github.com/AlecsFarias/mock-api.git cd mock-api
+
+2. **Instale as dependências**:
+   yarn
+
+3. **Inicie o servidor**:
+   yarn start
+
+---
+
+### Frontend (React)
+
+1. **Clone o repositório do frontend**:
+
+- git clone <URL_DO_REPOSITORIO_FRONTEND> cd frontend
+
+2. **Instale as dependências**:
+   yarn
+
+3. **Adicione o arquivo `.env`**:
+
+- Crie um arquivo `.env` na raiz do projeto utilizando o `.env.example` como referência.
+- Preencha os campos necessários (como a URL do backend).
+
+4. **Inicie o projeto React**:
+   yarn dev
+
+---
+
+## 🛠️ Funcionalidades do Frontend
+
+- **Autenticação de Usuários**:
+- Login
+- Registro de novos usuários
+
+- **Gestão de Carteira Digital**:
+- Controle de carteira para apostas
+- Atualizações em tempo real via **Socket.IO**
+- Histórico de transações financeiras
+
+- **Funcionalidades de Apostas**:
+- Criação de novas apostas
+- Listagem de apostas ativas e finalizadas
+
+- **Validação de Formulários**:
+- Validação robusta para entradas de dados em formulários de registro, login e transações
+
+- **Experiência do Usuário**:
+- **Controle de Tema**: Alternância entre tema claro e escuro
+- **Suporte a Múltiplos Idiomas**:
+- Português
+- Espanhol
+- Inglês
+
+---

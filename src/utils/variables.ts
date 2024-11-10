@@ -1,6 +1,6 @@
 export const variables = {
-  backendUrl: "http://localhost:3000/",
-  backendSocketUrl: "ws://localhost:3000/",
+  backendUrl: import.meta.env.VITE_BACKEND_REST_URL,
+  backendSocketUrl: import.meta.env.VITE_BACKEND_WS_URL,
   backendTimeout: 1000 * 5, //5 seconds
   snackbarTimeout: 1000 * 3, // 3 seconds
   maxSnackbars: 3,

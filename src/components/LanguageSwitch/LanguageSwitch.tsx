@@ -27,6 +27,7 @@ export const LanguageSwitch = () => {
       defaultValue={lng}
       sx={{
         width: "100%",
+        zIndex: 99999,
       }}
     >
       {Object.entries(lngs).map(([value, label]) => (

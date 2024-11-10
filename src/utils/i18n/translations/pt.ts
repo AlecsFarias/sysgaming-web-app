@@ -13,7 +13,7 @@ export const pt = {
           required: "O e-mail é obrigatório",
           valid: "Deve ser e-mail válido",
         },
-        pasword: {
+        password: {
           required: "A senha é obrigatória",
         },
       },
@@ -37,7 +37,7 @@ export const pt = {
           required: "O e-mail é obrigatório",
           valid: "Deve ser e-mail válido",
         },
-        pasword: {
+        password: {
           required: "A senha é obrigatória",
         },
         confirmPassword: {

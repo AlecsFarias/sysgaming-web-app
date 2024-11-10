@@ -13,7 +13,7 @@ export const signUpSchema = (translate: (key: TranslationKeys) => string) =>
         })
         .email(translate("auth.signUp.errors.email.valid")),
       password: z.string({
-        required_error: translate("auth.signUp.errors.pasword.required"),
+        required_error: translate("auth.signUp.errors.password.required"),
       }),
       confirmPassword: z.string({
         required_error: translate(

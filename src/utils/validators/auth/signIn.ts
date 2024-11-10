@@ -9,7 +9,7 @@ export const signInSchema = (translate: (key: TranslationKeys) => string) =>
       })
       .email(translate("auth.signIn.errors.email.valid")),
     password: z.string({
-      required_error: translate("auth.signIn.errors.pasword.required"),
+      required_error: translate("auth.signIn.errors.password.required"),
     }),
   });
 

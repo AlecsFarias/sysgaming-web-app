@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
         top: 0,
         width: "100vw",
         height: "var(--Header-height)",
-        zIndex: 9995,
+        zIndex: 9,
         p: 2,
         gap: 1,
         borderBottom: "1px solid",

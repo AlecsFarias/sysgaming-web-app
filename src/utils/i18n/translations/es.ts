@@ -45,6 +45,7 @@ export const es = {
           equal: "Las contraseñas deben coincidir",
         },
       },
+      success: "¡Cuenta creada exitosamente!",
     },
   },
   dataGrid: {
@@ -106,7 +107,7 @@ export const es = {
         table: {
           title: "Transacciones Financieras en tu Billetera",
           value: "Monto",
-          status: "Estado",
+          type: "Tipos",
           date: "Fecha",
         },
       },

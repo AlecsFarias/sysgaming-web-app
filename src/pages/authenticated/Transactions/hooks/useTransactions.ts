@@ -61,22 +61,13 @@ export const useTransactions = () => {
     },
     {
       id: "status",
-      label: translate("authenticated.pages.transactions.table.status"),
+      label: translate("authenticated.pages.transactions.table.type"),
       style: (data: Transaction) => ({
         fontWeight: "bold",
         color: color(data),
       }),
-      format: (data: Transaction) => {
-        if (data.type === "cancel") {
-          return "Aposta Cancelada";
-        }
-
-        if (data.type === "win") {
-          return "Aposta Ganha";
-        }
-
-        return "Aposta";
-      },
+      format: (data: Transaction) =>
+        translate(`authenticated.pages.transactions.type.${data.type}` as any),
     },
 
     {

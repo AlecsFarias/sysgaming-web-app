@@ -15,7 +15,7 @@ export const HistoryTable: React.FC = () => {
 
   return (
     <DataGrid
-      title={translate("authenticated.pages.home.hitory.title")}
+      title={translate("authenticated.pages.home.history.title")}
       columns={columns}
       data={data?.data ?? []}
       handleChangePage={makeFilterHandlerForFilter("page")}
@@ -34,13 +34,13 @@ export const HistoryTable: React.FC = () => {
               }
             >
               <Option value={"all"}>
-                {translate("authenticated.pages.home.hitory.status.all")}
+                {translate("authenticated.pages.home.history.status.all")}
               </Option>
 
               {betStatuses.map((status) => (
                 <Option value={status} key={status}>
                   {translate(
-                    `authenticated.pages.home.hitory.status.${status}` as any
+                    `authenticated.pages.home.history.status.${status}` as any
                   )}
                 </Option>
               ))}

@@ -20,7 +20,7 @@ export const Transactions: React.FC = () => {
       />
 
       <DataGrid
-        title="Transações financeiras em sua carteira"
+        title={translate("authenticated.pages.transactions.table.title")}
         columns={columns}
         data={data?.data ?? []}
         handleChangePage={makeFilterHandlerForFilter("page")}
@@ -39,7 +39,7 @@ export const Transactions: React.FC = () => {
                 }
               >
                 <Option value={"all"}>
-                  {translate("authenticated.pages.home.hitory.status.all")}
+                  {translate("authenticated.pages.transactions.type.all")}
                 </Option>
 
                 {transactionTypes.map((type) => (

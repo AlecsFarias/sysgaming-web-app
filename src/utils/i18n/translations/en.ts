@@ -45,6 +45,7 @@ export const en = {
           equal: "Passwords must match",
         },
       },
+      success: "Account created successfully!",
     },
   },
   dataGrid: {
@@ -106,7 +107,7 @@ export const en = {
         table: {
           title: "Financial Transactions in Your Wallet",
           value: "Amount",
-          status: "Status",
+          type: "Type",
           date: "Date",
         },
       },

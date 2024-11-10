@@ -73,7 +73,7 @@ export const useHistoryTable = () => {
       queryKey: ["bets"],
     });
 
-    enqueueSnackbar(translate("authenticated.pages.home.hitory.deleted"), {
+    enqueueSnackbar(translate("authenticated.pages.home.history.deleted"), {
       variant: "success",
     });
   };
@@ -81,13 +81,13 @@ export const useHistoryTable = () => {
   const columns: HeadCell[] = [
     {
       id: "amount",
-      label: translate("authenticated.pages.home.hitory.table.value"),
+      label: translate("authenticated.pages.home.history.table.value"),
       minWidth: 150,
       Render: (data: Bet) => formatMoney(data.amount, currency),
     },
     {
       id: "status",
-      label: translate("authenticated.pages.home.hitory.table.status"),
+      label: translate("authenticated.pages.home.history.table.status"),
       style: (data: Bet) => ({
         fontWeight: "bold",
         color: color(data),
@@ -106,7 +106,7 @@ export const useHistoryTable = () => {
     },
     {
       id: "amount",
-      label: translate("authenticated.pages.home.hitory.table.gain"),
+      label: translate("authenticated.pages.home.history.table.gain"),
       Render: (data: Bet) => {
         return (
           <Typography
@@ -128,7 +128,7 @@ export const useHistoryTable = () => {
     },
     {
       id: "createdAt",
-      label: translate("authenticated.pages.home.hitory.table.date"),
+      label: translate("authenticated.pages.home.history.table.date"),
       format: (data: Bet) => formatDate(data.createdAt),
     },
     {

@@ -18,13 +18,9 @@ export const useBet = () => {
 
   const { mutate: createBet, isLoading } = useCreateBetService({
     onError: (error) =>
-      enqueueSnackbar(
-        error?.response?.data?.message ??
-          "Ocorreu algum erro, tente novamente mais tarde",
-        {
-          variant: "error",
-        }
-      ),
+      enqueueSnackbar(error?.response?.data?.message, {
+        variant: "error",
+      }),
     onSuccess: onSuccessBet,
   });
 

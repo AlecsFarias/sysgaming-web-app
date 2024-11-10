@@ -45,6 +45,7 @@ export const pt = {
           equal: "A senhas devem ser iguais",
         },
       },
+      success: "Conta criada com sucesso!",
     },
   },
   dataGrid: {
@@ -77,7 +78,7 @@ export const pt = {
             max: "Saldo insuficiente",
           },
         },
-        hitory: {
+        history: {
           title: "Apostas",
           table: {
             value: "Valor apostado",
@@ -106,7 +107,7 @@ export const pt = {
         table: {
           title: "Transações financeiras em sua carteira",
           value: "Valor",
-          status: "Status",
+          type: "Tipo",
           date: "Data",
         },
       },

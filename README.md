@@ -29,13 +29,15 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
 1. **Clone o repositório do backend**:
 
-git clone -b sysgaming-alecsander-test https://github.com/AlecsFarias/mock-api.git cd mock-api
+- git clone -b sysgaming-alecsander-test https://github.com/AlecsFarias/mock-api.git cd mock-api
 
 2. **Instale as dependências**:
-   yarn
+
+- yarn
 
 3. **Inicie o servidor**:
-   yarn start
+
+- yarn start
 
 ---
 
@@ -46,7 +48,8 @@ git clone -b sysgaming-alecsander-test https://github.com/AlecsFarias/mock-api.g
 - git clone <URL_DO_REPOSITORIO_FRONTEND> cd frontend
 
 2. **Instale as dependências**:
-   yarn
+
+- yarn
 
 3. **Adicione o arquivo `.env`**:
 
@@ -54,7 +57,8 @@ git clone -b sysgaming-alecsander-test https://github.com/AlecsFarias/mock-api.g
 - Preencha os campos necessários (como a URL do backend).
 
 4. **Inicie o projeto React**:
-   yarn dev
+
+- yarn dev
 
 ---
 

@@ -5,19 +5,19 @@ import { Link as RouterLink } from "react-router-dom";
 import { useSignUp } from "./hooks/useSignUp";
 
 export const SignUp: React.FC = () => {
-  const { control, errors, onSubmit, isLoading } = useSignUp();
+  const { control, errors, onSubmit, isLoading, translate } = useSignUp();
 
   return (
     <>
       <Stack sx={{ gap: 4, mb: 2 }}>
         <Stack sx={{ gap: 1 }}>
           <Typography component="h1" level="h3">
-            Cadastro
+            {translate("auth.signUp.title")}
           </Typography>
           <Typography level="body-sm">
-            Ja tem conta ?
+            {translate("auth.signUp.haveAccount")}
             <Link component={RouterLink} to="/signIn" level="title-sm" ml={1}>
-              Fazer login
+              {translate("auth.signUp.goSignIn")}
             </Link>
           </Typography>
         </Stack>
@@ -27,21 +27,21 @@ export const SignUp: React.FC = () => {
         <form onSubmit={onSubmit}>
           <Input
             name="name"
-            label="Nome"
+            label={translate("auth.signUp.forms.name")}
             control={control}
             error={errors?.name?.message}
           />
 
           <Input
             name="email"
-            label="E-mail"
+            label={translate("auth.signUp.forms.email")}
             control={control}
             error={errors?.email?.message}
           />
 
           <Input
             name="password"
-            label="Senha"
+            label={translate("auth.signUp.forms.password")}
             control={control}
             type="password"
             error={errors?.password?.message}
@@ -49,14 +49,14 @@ export const SignUp: React.FC = () => {
 
           <Input
             name="confirmPassword"
-            label="Repetir senha"
+            label={translate("auth.signUp.forms.repeatPassword")}
             control={control}
             type="password"
             error={errors?.confirmPassword?.message}
           />
 
           <Button type="submit" fullWidth sx={{ mt: 6 }} loading={isLoading}>
-            Sign in
+            {translate("auth.signUp.forms.signUp")}
           </Button>
         </form>
       </Stack>

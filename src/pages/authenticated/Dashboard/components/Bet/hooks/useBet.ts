@@ -10,9 +10,10 @@ import {
   useCreateBetService,
 } from "../../../../../../services/bet/createBet";
 import { enqueueSnackbar } from "notistack";
-import { queryClient } from "../../../../../../utils";
+import { queryClient, useTranslation } from "../../../../../../utils";
 
 export const useBet = () => {
+  const { translate } = useTranslation();
   const balance = useUserStore((state) => state.user?.balance ?? 0);
 
   const { mutate: createBet, isLoading } = useCreateBetService({
@@ -36,8 +37,8 @@ export const useBet = () => {
 
     enqueueSnackbar(
       sucess
-        ? "Você ganhou a aposta! 🤩"
-        : "Parece que você perdeu essa aposta 😭",
+        ? translate("authenticated.pages.home.bet.success")
+        : translate("authenticated.pages.home.bet.lose"),
       {
         variant: sucess ? "success" : "error",
         hideIconVariant: true,
@@ -50,7 +51,7 @@ export const useBet = () => {
     control,
     formState: { errors },
   } = useForm<CreateBetSchema>({
-    resolver: zodResolver(createBetSchema(balance)),
+    resolver: zodResolver(createBetSchema(balance, translate)),
   });
 
   const onSubmit = (data: CreateBetSchema) => {
@@ -62,5 +63,6 @@ export const useBet = () => {
     control,
     errors,
     isLoading,
+    translate,
   };
 };

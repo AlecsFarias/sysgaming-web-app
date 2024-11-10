@@ -5,19 +5,19 @@ import { Input } from "../../../components/form";
 import { useSignIn } from "./hooks/useSignIn";
 
 export const SignIn: React.FC = () => {
-  const { control, errors, onSubmit, isLoading } = useSignIn();
+  const { control, errors, onSubmit, isLoading, translate } = useSignIn();
 
   return (
     <>
       <Stack sx={{ gap: 4, mb: 2 }}>
         <Stack sx={{ gap: 1 }}>
           <Typography component="h1" level="h3">
-            Entrar
+            {translate("auth.signIn.title")}
           </Typography>
           <Typography level="body-sm">
-            Ainda não tem cadastro ?
+            {translate("auth.signIn.noRegister")}
             <Link component={RouterLink} to="/signUp" level="title-sm" ml={1}>
-              Quero me cadastrar
+              {translate("auth.signIn.goRegister")}
             </Link>
           </Typography>
         </Stack>
@@ -27,21 +27,21 @@ export const SignIn: React.FC = () => {
         <form onSubmit={onSubmit}>
           <Input
             name="email"
-            label="E-mail"
+            label={translate("auth.signIn.forms.email")}
             control={control}
             error={errors?.email?.message}
           />
 
           <Input
             name="password"
-            label="Senha"
+            label={translate("auth.signIn.forms.password")}
             control={control}
             type="password"
             error={errors?.password?.message}
           />
 
           <Button type="submit" fullWidth sx={{ mt: 6 }} loading={isLoading}>
-            Entrar
+            {translate("auth.signIn.title")}
           </Button>
         </form>
       </Stack>

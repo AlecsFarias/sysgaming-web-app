@@ -7,7 +7,12 @@ import {
 } from "../../../../../../services";
 import { useUserStore } from "../../../../../../store";
 import { HeadCell } from "../../../../../../components";
-import { formatDate, formatMoney, queryClient } from "../../../../../../utils";
+import {
+  formatDate,
+  formatMoney,
+  queryClient,
+  useTranslation,
+} from "../../../../../../utils";
 import { Bet } from "../../../../../../utils/@types";
 import { IconButton, Typography } from "@mui/joy";
 import { Delete } from "@mui/icons-material";
@@ -32,6 +37,7 @@ const color = (data: Bet) => {
 const resetPageIfKey = ["status", "limit"];
 
 export const useHistoryTable = () => {
+  const { translate } = useTranslation();
   const currency = useUserStore((state) => state.user?.currency);
 
   const [filters, setFilters] = useState<ListBetsParams>({
@@ -67,7 +73,7 @@ export const useHistoryTable = () => {
       queryKey: ["bets"],
     });
 
-    enqueueSnackbar("Aposta cancelada com sucesso", {
+    enqueueSnackbar(translate("authenticated.pages.home.hitory.deleted"), {
       variant: "success",
     });
   };
@@ -75,13 +81,13 @@ export const useHistoryTable = () => {
   const columns: HeadCell[] = [
     {
       id: "amount",
-      label: "Valor apostado",
+      label: translate("authenticated.pages.home.hitory.table.value"),
       minWidth: 150,
       Render: (data: Bet) => formatMoney(data.amount, currency),
     },
     {
       id: "status",
-      label: "status",
+      label: translate("authenticated.pages.home.hitory.table.status"),
       style: (data: Bet) => ({
         fontWeight: "bold",
         color: color(data),
@@ -100,7 +106,7 @@ export const useHistoryTable = () => {
     },
     {
       id: "amount",
-      label: "Valor recebido",
+      label: translate("authenticated.pages.home.hitory.table.gain"),
       Render: (data: Bet) => {
         return (
           <Typography
@@ -122,7 +128,7 @@ export const useHistoryTable = () => {
     },
     {
       id: "createdAt",
-      label: "Data",
+      label: translate("authenticated.pages.home.hitory.table.date"),
       format: (data: Bet) => formatDate(data.createdAt),
     },
     {
@@ -155,6 +161,7 @@ export const useHistoryTable = () => {
   ];
 
   return {
+    translate,
     filters,
     makeFilterHandlerForFilter,
     data,

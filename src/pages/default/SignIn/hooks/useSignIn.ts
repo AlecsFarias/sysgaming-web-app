@@ -9,8 +9,10 @@ import { enqueueSnackbar } from "notistack";
 import { useAuthStore } from "../../../../store/auth.store";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../../../../store";
+import { useTranslation } from "../../../../utils";
 
 export const useSignIn = () => {
+  const { translate } = useTranslation();
   const navigate = useNavigate();
   const authenticate = useAuthStore((state) => state.authenticate);
   const setUser = useUserStore((state) => state.setUser);
@@ -34,7 +36,7 @@ export const useSignIn = () => {
     control,
     formState: { errors },
   } = useForm<SignInSchema>({
-    resolver: zodResolver(signInSchema),
+    resolver: zodResolver(signInSchema(translate)),
   });
 
   const onSubmit = (data: SignInSchema) => {
@@ -46,5 +48,6 @@ export const useSignIn = () => {
     control,
     errors,
     isLoading,
+    translate,
   };
 };

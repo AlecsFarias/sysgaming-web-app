@@ -1,31 +1,36 @@
 import { z } from "zod";
+import { TranslationKeys } from "../../i18n/translations";
 
-export const signUpSchema = z
-  .object({
-    name: z.string({
-      required_error: "O nome é obrigatório",
-    }),
-    email: z
-      .string({
-        required_error: "O e-mail é obrigatório",
-      })
-      .email("Deve ser um e-mail válido"),
-    password: z.string({
-      required_error: "A senha é obrigatória",
-    }),
+export const signUpSchema = (translate: (key: TranslationKeys) => string) =>
+  z
+    .object({
+      name: z.string({
+        required_error: translate("auth.signUp.errors.name.required"),
+      }),
+      email: z
+        .string({
+          required_error: translate("auth.signUp.errors.email.required"),
+        })
+        .email(translate("auth.signUp.errors.email.valid")),
+      password: z.string({
+        required_error: translate("auth.signUp.errors.pasword.required"),
+      }),
+      confirmPassword: z.string({
+        required_error: translate(
+          "auth.signUp.errors.confirmPassword.required"
+        ),
+      }),
+    })
+    .superRefine(({ confirmPassword, password }, ctx) => {
+      if (confirmPassword !== password) {
+        ctx.addIssue({
+          code: "custom",
+          message: translate("auth.signUp.errors.confirmPassword.equal"),
+          path: ["confirmPassword"],
+        });
+      }
+    });
 
-    confirmPassword: z.string({
-      required_error: "A senha é obrigatória",
-    }),
-  })
-  .superRefine(({ confirmPassword, password }, ctx) => {
-    if (confirmPassword !== password) {
-      ctx.addIssue({
-        code: "custom",
-        message: "A senhas devem ser iguais",
-        path: ["confirmPassword"],
-      });
-    }
-  });
+const signUpSchemaExamples = signUpSchema((key: string) => "");
 
-export type SignUpSchema = z.infer<typeof signUpSchema>;
+export type SignUpSchema = z.infer<typeof signUpSchemaExamples>;

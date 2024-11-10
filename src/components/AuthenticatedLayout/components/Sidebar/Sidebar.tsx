@@ -16,24 +16,27 @@ import { ThemeButton } from "../../../ThemeButton";
 
 import logo from "../../../../assets/logo.webp";
 import { Item, ItemProps, Profile } from "./components";
-import { closeSidebar } from "../../../../utils";
-
-const routes: Array<ItemProps & { key: string }> = [
-  {
-    key: "home",
-    name: "Inicio",
-    route: "/home",
-    icon: <HomeRounded />,
-  },
-  {
-    key: "transactions",
-    name: "Transacoes",
-    route: "/transactions",
-    icon: <Money />,
-  },
-];
+import { closeSidebar, useTranslation } from "../../../../utils";
+import { LanguageSwitch } from "../../../LanguageSwitch";
 
 export const Sidebar: React.FC = () => {
+  const { translate } = useTranslation();
+
+  const routes: Array<ItemProps & { key: string }> = [
+    {
+      key: "home",
+      name: translate("authenticated.layout.items.home"),
+      route: "/home",
+      icon: <HomeRounded />,
+    },
+    {
+      key: "transactions",
+      name: translate("authenticated.layout.items.transactions"),
+      route: "/transactions",
+      icon: <Money />,
+    },
+  ];
+
   return (
     <Sheet
       className="Sidebar"
@@ -127,10 +130,7 @@ export const Sidebar: React.FC = () => {
           }}
         >
           <ListItem>
-            <ListItemButton>
-              <Flag />
-              Aqui trocar de lingua
-            </ListItemButton>
+            <LanguageSwitch />
           </ListItem>
         </List>
       </Box>

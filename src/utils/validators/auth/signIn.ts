@@ -1,14 +1,18 @@
 import { z } from "zod";
+import { TranslationKeys } from "../../i18n/translations";
 
-export const signInSchema = z.object({
-  email: z
-    .string({
-      required_error: "O e-mail é obrigatório",
-    })
-    .email("Deve ser um e-mail válido"),
-  password: z.string({
-    required_error: "A senha é obrigatória",
-  }),
-});
+export const signInSchema = (translate: (key: TranslationKeys) => string) =>
+  z.object({
+    email: z
+      .string({
+        required_error: translate("auth.signIn.errors.email.required"),
+      })
+      .email(translate("auth.signIn.errors.email.valid")),
+    password: z.string({
+      required_error: translate("auth.signIn.errors.pasword.required"),
+    }),
+  });
 
-export type SignInSchema = z.infer<typeof signInSchema>;
+const signInSchemaExample = signInSchema((key: string) => "");
+
+export type SignInSchema = z.infer<typeof signInSchemaExample>;

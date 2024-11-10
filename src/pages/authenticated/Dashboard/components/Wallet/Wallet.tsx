@@ -1,6 +1,6 @@
 import { Box, Grid, styled, Typography } from "@mui/joy";
 import { useUserStore } from "../../../../../store";
-import { formatMoney, useBalanceSocket } from "../../../../../utils";
+import { formatMoney, useTranslation } from "../../../../../utils";
 import { Card } from "../Card";
 import { useEffect, useState } from "react";
 
@@ -18,6 +18,7 @@ const BalanceAmount = styled(Typography)({
 });
 
 export const Wallet: React.FC = () => {
+  const { translate } = useTranslation();
   const [balance, setBalance] = useState(0);
 
   const [successAnimation, setSuccessAnimation] = useState(false);
@@ -48,7 +49,7 @@ export const Wallet: React.FC = () => {
   }, [storeBalance]);
 
   return (
-    <Card title="Saldo Atual">
+    <Card title={translate("authenticated.pages.home.wallet.title")}>
       <Grid container spacing={2}>
         <Grid xs>
           <Box
@@ -110,7 +111,7 @@ export const Wallet: React.FC = () => {
       </Grid>
 
       <Typography mt={2}>
-        Aposte com responsabilidade. Boa sorte nas suas apostas!
+        {translate("authenticated.pages.home.wallet.tip")}
       </Typography>
     </Card>
   );

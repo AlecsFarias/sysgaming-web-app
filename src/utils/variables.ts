@@ -7,5 +7,6 @@ export const variables = {
   stores: {
     auth: "sysgaming-auth",
     user: "sysgaming-user",
+    tranlation: "sysgaming-tranlation",
   },
 };

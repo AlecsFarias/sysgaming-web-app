@@ -8,6 +8,7 @@ import {
 } from "@mui/joy";
 
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
+import { useTranslation } from "../../../../utils";
 
 type FooterProps = {
   page: number;
@@ -26,6 +27,8 @@ export const Footer: React.FC<FooterProps> = ({
   handleChangeRowsPerPage,
   columnsLengt,
 }) => {
+  const { translate } = useTranslation();
+
   return (
     <tfoot>
       <tr>
@@ -39,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({
             }}
           >
             <FormControl orientation="horizontal" size="sm">
-              <FormLabel>Linhas por pagina:</FormLabel>
+              <FormLabel>{translate("dataGrid.rowsPerPage")}:</FormLabel>
               <Select
                 onChange={(_, perPage) =>
                   handleChangeRowsPerPage(perPage ?? 10)

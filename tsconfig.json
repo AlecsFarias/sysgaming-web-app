@@ -7,6 +7,8 @@
   "compilerOptions": {
     "paths": {
       "react": ["./node_modules/@types/react"]
-    }
+    },
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   }
 }

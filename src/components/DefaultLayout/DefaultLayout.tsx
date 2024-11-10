@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import logo from "../../assets/logo.webp";
 import { ThemeButton } from "../ThemeButton";
+import { LanguageSwitch } from "../LanguageSwitch";
 
 export const DefaultLayout: React.FC = () => {
   return (
@@ -42,7 +43,10 @@ export const DefaultLayout: React.FC = () => {
               </IconButton>
               <Typography level="title-lg">SysGaming</Typography>
             </Box>
-            <ThemeButton />
+            <Box display={"flex"} alignItems={"center"} gap={1}>
+              <LanguageSwitch />
+              <ThemeButton />
+            </Box>
           </Box>
 
           <Box

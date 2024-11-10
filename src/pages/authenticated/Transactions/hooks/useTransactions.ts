@@ -6,7 +6,7 @@ import {
   useListTransactions,
 } from "../../../../services";
 import { HeadCell } from "../../../../components";
-import { formatDate, formatMoney } from "../../../../utils";
+import { formatDate, formatMoney, useTranslation } from "../../../../utils";
 
 const color = (data: Transaction) => {
   if (data.type === "win" || data.type === "cancel") {
@@ -18,6 +18,7 @@ const color = (data: Transaction) => {
 const resetPageIfKey = ["type", "limit"];
 
 export const useTransactions = () => {
+  const { translate } = useTranslation();
   const currency = useUserStore((state) => state.user?.currency);
   const [filters, setFilters] = useState<ListTransactionsParams>({
     limit: 10,
@@ -50,7 +51,7 @@ export const useTransactions = () => {
   const columns: HeadCell[] = [
     {
       id: "amount",
-      label: "Valor",
+      label: translate("authenticated.pages.transactions.table.value"),
       minWidth: 150,
       style: (data: Transaction) => ({
         fontWeight: "bold",
@@ -60,7 +61,7 @@ export const useTransactions = () => {
     },
     {
       id: "status",
-      label: "status",
+      label: translate("authenticated.pages.transactions.table.status"),
       style: (data: Transaction) => ({
         fontWeight: "bold",
         color: color(data),
@@ -80,7 +81,7 @@ export const useTransactions = () => {
 
     {
       id: "createdAt",
-      label: "Data",
+      label: translate("authenticated.pages.transactions.table.date"),
       format: (data: Transaction) => formatDate(data.createdAt),
     },
   ];
@@ -91,5 +92,6 @@ export const useTransactions = () => {
     loading,
     makeFilterHandlerForFilter,
     filters,
+    translate,
   };
 };

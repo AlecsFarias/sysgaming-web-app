@@ -3,3 +3,4 @@ export * from "./Providers";
 export * from "./form";
 export * from "./Header";
 export * from "./DataGrid";
+export * from "./LanguageSwitch";

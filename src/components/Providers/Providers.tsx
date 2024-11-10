@@ -10,6 +10,8 @@ type ProvidersProps = {
   children: React.ReactNode;
 };
 
+import "../../utils/i18n";
+
 export const Providers: React.FC<ProvidersProps> = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>

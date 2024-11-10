@@ -4,12 +4,18 @@ import { useHistoryTable } from "./hooks/useHistoryTable";
 import { betStatuses } from "../../../../../utils/@types";
 
 export const HistoryTable: React.FC = () => {
-  const { data, filters, loading, makeFilterHandlerForFilter, columns } =
-    useHistoryTable();
+  const {
+    data,
+    filters,
+    loading,
+    makeFilterHandlerForFilter,
+    columns,
+    translate,
+  } = useHistoryTable();
 
   return (
     <DataGrid
-      title="Apostas"
+      title={translate("authenticated.pages.home.hitory.title")}
       columns={columns}
       data={data?.data ?? []}
       handleChangePage={makeFilterHandlerForFilter("page")}
@@ -22,17 +28,20 @@ export const HistoryTable: React.FC = () => {
         <Grid container spacing={2} justifyContent={"flex-end"}>
           <Grid>
             <Select
-              placeholder="Filtrar por status"
               defaultValue={"all"}
               onChange={(_, value) =>
                 makeFilterHandlerForFilter("status")(value)
               }
             >
-              <Option value={"all"}>Todos</Option>
+              <Option value={"all"}>
+                {translate("authenticated.pages.home.hitory.status.all")}
+              </Option>
 
               {betStatuses.map((status) => (
                 <Option value={status} key={status}>
-                  {status}
+                  {translate(
+                    `authenticated.pages.home.hitory.status.${status}` as any
+                  )}
                 </Option>
               ))}
             </Select>

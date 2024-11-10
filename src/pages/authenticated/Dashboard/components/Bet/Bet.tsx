@@ -35,10 +35,10 @@ const NumericFormatAdapter = forwardRef<NumericFormatProps, CustomProps>(
 );
 
 export const Bet: React.FC = () => {
-  const { control, errors, handleSubmit, isLoading } = useBet();
+  const { control, errors, handleSubmit, isLoading, translate } = useBet();
 
   return (
-    <Card title="Apostar">
+    <Card title={translate("authenticated.pages.home.bet.title")}>
       <form onSubmit={handleSubmit}>
         <Stack gap={2}>
           <Input
@@ -46,7 +46,7 @@ export const Bet: React.FC = () => {
             color="success"
             size="lg"
             variant="soft"
-            placeholder="Valor de aposta"
+            placeholder={translate("authenticated.pages.home.bet.placeholder")}
             control={control}
             error={errors?.amount?.message}
             slotProps={{
@@ -57,7 +57,7 @@ export const Bet: React.FC = () => {
           />
 
           <Button color="success" type="submit" loading={isLoading}>
-            Apostar
+            {translate("authenticated.pages.home.bet.title")}
           </Button>
         </Stack>
       </form>

@@ -2,14 +2,22 @@ import { DataGrid, Header } from "../../../components";
 import { transactionTypes } from "../../../utils/@types";
 import { Grid, Option, Select } from "@mui/joy";
 import { useTransactions } from "./hooks/useTransactions";
-
 export const Transactions: React.FC = () => {
-  const { columns, data, makeFilterHandlerForFilter, filters, loading } =
-    useTransactions();
+  const {
+    columns,
+    data,
+    makeFilterHandlerForFilter,
+    filters,
+    loading,
+    translate,
+  } = useTransactions();
 
   return (
     <>
-      <Header routes={["Transações"]} title="Transações financeiras" />
+      <Header
+        routes={[translate("authenticated.pages.transactions.routes")]}
+        title={translate("authenticated.pages.transactions.title")}
+      />
 
       <DataGrid
         title="Transações financeiras em sua carteira"
@@ -25,17 +33,20 @@ export const Transactions: React.FC = () => {
           <Grid container spacing={2} justifyContent={"flex-end"}>
             <Grid>
               <Select
-                placeholder="Filtrar por status"
                 defaultValue={"all"}
                 onChange={(_, value) =>
                   makeFilterHandlerForFilter("type")(value)
                 }
               >
-                <Option value={"all"}>Todos</Option>
+                <Option value={"all"}>
+                  {translate("authenticated.pages.home.hitory.status.all")}
+                </Option>
 
                 {transactionTypes.map((type) => (
                   <Option value={type} key={type}>
-                    {type}
+                    {translate(
+                      `authenticated.pages.transactions.type.${type}` as any
+                    )}
                   </Option>
                 ))}
               </Select>

@@ -7,9 +7,11 @@ import {
   SignUpSchema,
 } from "../../../../utils/validators/auth/signUp";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "../../../../utils";
 
 export const useSignUp = () => {
   const navigate = useNavigate();
+  const { translate } = useTranslation();
 
   const { mutate: signIn, isLoading } = useSignUpService({
     onError: (error) =>
@@ -29,7 +31,7 @@ export const useSignUp = () => {
     control,
     formState: { errors },
   } = useForm<SignUpSchema>({
-    resolver: zodResolver(signUpSchema),
+    resolver: zodResolver(signUpSchema(translate)),
   });
 
   const onSubmit = (data: SignUpSchema) => {
@@ -41,5 +43,6 @@ export const useSignUp = () => {
     control,
     errors,
     isLoading,
+    translate,
   };
 };

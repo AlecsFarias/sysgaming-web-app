@@ -29,7 +29,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
 1. **Clone o repositório do backend**:
 
-- git clone [-b sysgaming-alecsander-test https://github.com/AlecsFarias/mock-api.git](https://github.com/AlecsFarias/mock-api.git) cd mock-api
+- clone a versao do repo de backend feito por min: https://github.com/AlecsFarias/mock-api/tree/sysgaming-alecsander-test
 
 2. **Instale as dependências**:
 

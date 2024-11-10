@@ -88,3 +88,10 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 - Inglês
 
 ---
+
+## 📊 Diagrama do Projeto
+
+Você pode visualizar o diagrama do projeto no seguinte link:  
+[Diagrama do Projeto](https://lucid.app/lucidchart/8464644f-c4e7-486e-8b0e-e732f3cd783f/edit?viewport_loc=84%2C-1246%2C2550%2C1274%2C0_0&invitationId=inv_c84d35de-7505-4f8b-a8a0-849f102cf3d8)
+
+---
